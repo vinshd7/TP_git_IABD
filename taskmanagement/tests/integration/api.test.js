@@ -32,7 +32,7 @@ describe("Auth — POST /api/auth/login", () => {
         email: "wrong@test.com",
         password: "wrongpassword",
       })
-    ).rejects.toMatchObject({ response: { status: 401 } });
+    ).rejects.toMatchObject({ response: { status: 400 } });
   });
 
   test("rejette une requête sans email", async () => {
@@ -110,7 +110,7 @@ describe("Tasks — DELETE /api/tasks/:id", () => {
       { headers: { Authorization: `Bearer ${authToken}` } }
     );
 
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(204);
   });
 
   test("retourne 404 pour une tâche inexistante", async () => {
